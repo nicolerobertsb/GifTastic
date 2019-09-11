@@ -1,3 +1,5 @@
+
+
 img {
     display: block;
     margin: auto;
@@ -15,6 +17,11 @@ img {
     margin: 3%;
   }
 
-  footer{
+  p{
+    text-align:center;
+  }
 
+  #addTopic{
+      margin-top: 3%;
+      background: lightblue;
   }

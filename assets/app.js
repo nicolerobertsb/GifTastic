@@ -92,8 +92,10 @@ $("#gifArea").on("click", ".gif", function (event) {
 
 })
 
+//add the new topic inputed by the user to a button
 $("#addTopic").on("click", function (event) {
     event.preventDefault();
+
     newTopic = $("input").val();
     console.log("newTopic: " + newTopic);
     topics.push(newTopic);
