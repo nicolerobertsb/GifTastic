@@ -24,20 +24,74 @@ var newButton = function () {
 
     }
 }
+
+//on click function that gets the gifs once each button is pressed
+
 $(document).on("click", ".buttonsTop", function () {
     $("#gifArea").empty();
     var topic = $(this).attr("data-type");
 
-    var queryURL="https://api.giphy.com/v1/gifs/search?q=" +topic  + "&api_key=Jwa8XTfkDcVzJPOFKS6nJT6SbfQABFXY&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=Jwa8XTfkDcVzJPOFKS6nJT6SbfQABFXY&limit=10";
     console.log(queryURL)
 
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response){
-        console.log(response.data[0]);
+    }).then(function (response) {
+        console.log(response.data);
+
+        var dataResults = response.data;
+
+        //create forloop so that all the below steps happen to every button
+        // create div to hold gifs
+        //under the gif display rating
+        // create img tag
+        // add data-states
+        // append image to the div
+
+        for (let i = 0; i < dataResults.length; i++) {
+
+            var gifDiv = $("<div>");
+            var p = $("<p>");
+            p.text(dataResults[i].rating);
+            p.text("Rating: " + dataResults[i].rating);
+
+            var animateURL = dataResults[i].images.fixed_height.url;
+
+            var stillURL = dataResults[i].images.fixed_height_still.url;
+
+            var img = $("<img>")
+
+            img.attr("src", stillURL);
+            img.attr("data-state", "still");
+            img.attr("data-animate", animateURL);
+            img.attr("data-still", stillURL);
+            img.addClass("gif");
+
+            gifDiv.append(img);
+            gifDiv.append(p);
+            $("#gifArea").prepend(gifDiv);
+
+        }
     })
 })
+
+// animate or still the gif when clicked
+$("#gifArea").on("click", ".gif", function (event) {
+    event.preventDefault();
+
+    var gifState = $(this).attr("data-state");
+
+    if (gifState === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+
+})
+
 $("#addTopic").on("click", function (event) {
     event.preventDefault();
     newTopic = $("input").val();
