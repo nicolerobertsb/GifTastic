@@ -1,0 +1,13 @@
+img {
+    display: block;
+    margin: auto;
+    padding-top: 10%;
+  }
+  
+  h1 {
+    font-family: 'Oswald', Helvetica Neue;
+    font-variant: small-caps;
+    font-size: 48px;
+    margin-top: -25px;
+    text-align: center; 
+  }
