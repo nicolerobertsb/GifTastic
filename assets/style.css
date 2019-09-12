@@ -1,24 +1,37 @@
+body{
+    background: url(https://www.tokkoro.com/picsup/5594130-harry-potter-wallpapers.jpg) no-repeat center fixed;
 
+}
 
 img {
     display: block;
     margin: auto;
-    padding-top: 10%;
   }
   
   h1 {
     font-family: 'Oswald', Helvetica Neue;
     font-variant: small-caps;
-    font-size: 48px;
+    font-size: 50px;
     margin:20px;
     text-align: center; 
+    color: lightgray;
   }
+
+  label {
+      color: lightgray;
+  }
+
+  .gif{
+      border: solid darkgrey 2px;
+  }
+
   .buttonsTop{
     margin: 3%;
   }
 
   p{
     text-align:center;
+    color: yellow;
   }
 
   #addTopic{
